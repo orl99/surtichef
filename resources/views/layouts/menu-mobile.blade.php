@@ -11,6 +11,7 @@
   {{-- <a href="javascript:void(0)"></a> --}}
   <a href="{{route ('home') }}"><i class="fas fa-home"></i> Inicio</a>
   <a href="{{url ('/Categorias/') }}"><i class="fas fa-boxes"></i> Productos</a>
+  <a href="{{url ('/favoritos') }}"><i class="fas fa-star"></i> Favoritos</a>
   <a href="{{route ('client.pedido') }}"><i class="fas fa-paste"></i> Pedidos</a>
   <a href="#"><i class="fas fa-table"></i> Datos</a>
   <a href="#"><i class="fas fa-info"></i> Ayuda</a>
@@ -31,7 +32,7 @@
   background-color:#ECF0F1;
   overflow-x: hidden;
   transition: 0.5s;
-  
+
 }
 
 .sidenav a {

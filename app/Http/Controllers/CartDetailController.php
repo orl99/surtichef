@@ -20,10 +20,46 @@ class CartDetailController extends Controller
       $notification = 'Se a Realizado con exito su Pedido!!';
    	return back()->with(compact('notification'));
    }
+
+
+    public function multiStore(Request $request)
+   {
+       /**
+        * Validaciones
+        * - Campos con valor
+        * - Campos sin caracteres no permitidos
+        * - Compos con valores validos
+        *
+        */
+    if( !empty($request->product_id) && !empty($request->quantity)){
+        $arrResponse = [
+            "product_id" => $request->product_id,
+            "quantity" => $request->quantity
+        ];
+        $filters = [
+            "product_id" => 'digit',
+            "quantity" => 'digit'
+        ];
+        $DataSanitize = \Sanitizer::make($arrResponse, $filters)->sanitize();
+
+
+        for($i = 0; $i <count($DataSanitize["product_id"]); $i++){
+                $cartDetail = new CartDetail();
+                $cartDetail->cart_id = auth()->user()->cart->id;
+                $cartDetail->product_id = $DataSanitize["product_id"][$i];
+                //$cartDetail->image = $request->product->image;
+                $cartDetail->quantity = $DataSanitize["quantity"][$i];
+                $cartDetail->save();
+        }
+        $notification = 'Se a Realizado con exito su Pedido!!';
+           return back()->with(compact('notification'));
+    }
+
+   }
 //////////////////////destroy///////////////////////////////
    public function destroy(Request $request)
    {
-   	$cartDetail = CartDetail::find($request->cart_detail_id);
+       $cartDetail = CartDetail::find($request->cart_detail_id);
    	if($cartDetail->cart_id == auth()->user()->cart->id)
    	$cartDetail->delete();
 
