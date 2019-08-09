@@ -101,7 +101,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark btn-lg" data-dismiss="modal">
                 <i class="far fa-times-circle"></i> Cancelar</button>
-                <button type="submit" class="btn bto-orange btn-lg">
+                <button type="submit" id="addCartBtnFinal" class="btn bto-orange btn-lg">
                     <i class="fas fa-plus"></i> Agregar
                 </button>
             </div>
