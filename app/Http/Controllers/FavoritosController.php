@@ -98,6 +98,25 @@ class favoritosController extends Controller
 
     }
 
+    public function destroy(Request $request)
+    {
+        $product_id = $request->product_id;
+        $user_id = $request->user_id;
+
+        if($user_id && $product_id){
+            $fav_id_response =
+            user_favs::where('id_product', $product_id)
+                        ->where('id_user', $user_id)
+                        ->get();
+
+            if($fav_id_response){
+                $fav_id_response[0]->delete();
+            }
+        }
+
+        return back();
+    }
+
 
 
 }

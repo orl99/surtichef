@@ -35,10 +35,11 @@
 
                <div class="col-12 py-4 px-0">{{ $detail->name }}</div>
 
-               <form method="post" action="{{url ('/Cart') }}">
+               <form method="post" action="{{url ('/favoritos') }}">
                        {{ csrf_field() }}
                        {{ method_field('DELETE') }}
-                       <input type="hidden" name="cart_detail_id" value="{{ $detail->id }}">
+                       <input type="hidden" name="product_id" value="{{ $detail->id }}">
+                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                    <div class="row mx-0 py-4">
                        <div class="col-6">
                            <a href="{{ url('/Products/'.$detail->id) }}" class="btn btn-info">
@@ -68,7 +69,7 @@
 
 
     <div class="col-12 py-4">
-        <button class="btn bto-orange btn-block btn-lg" data-toggle="modal" data-target="#myModal">Agregar al Carrito</button>
+        <button class="btn bto-orange btn-block btn-lg" data-toggle="modal" id="addCartButton" data-target="#myModal">Agregar al Carrito</button>
     </div>
 
     <!-- The Modal -->
@@ -84,15 +85,16 @@
             </div>
 
         <form method="post" action="{{url ('/CartMultiStore') }}">
-            <div class="modal-body">
+            <div class="modal-body" id="modalBody">
             <!-- Modal body -->
                 {{ csrf_field() }}
                 @foreach($query as $detail)
-                    <div class="col-12 form-group">
-                        <h4 class="modal-title">{{$detail->name}}</h4>
-                        <input class="form-control" type="number" name="quantity[]">
-                        <input type="hidden" name="product_id[]" value="{{ $detail->id }}">
-                    </div>
+            <div class="col-12 form-group" id="El{{$detail->id}}">
+                    <button onclick="deleteList('El{{$detail->id}}')" type="button" style="background-color: red; border-radius: 50%; color:white; width:24; height: 24px;" class="close deleteEle">&times;</button>
+                    <h4 class="modal-title">{{$detail->name}}</h4>
+                    <input required class="form-control inputNum" type="number" name="quantity[]">
+                    <input type="hidden" name="product_id[]" value="{{ $detail->id }}">
+                </div>
                 @endforeach
             </div>
                 <!-- Modal footer -->

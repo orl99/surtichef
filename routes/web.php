@@ -36,6 +36,7 @@ Route::view('/Client/Mis-Datos', 'client.info')->name('info');
 //Favoritos
 Route::get('/favoritos', 'FavoritosController@index')->name('favoritos');
 Route::post('/favoritos','FavoritosController@insert')->name('favoritos');
+Route::delete('/favoritos','FavoritosController@destroy');
 
 Route::middleware(['auth','admin'])->group(function () {
       Route::get('/Admin', 'DashboardController@dashboard')->name('dashboard');
