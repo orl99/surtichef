@@ -70,6 +70,9 @@
 
     </div>
 </div>
+
+<script src="{{ asset('js/pedidos.js') }}" defer></script>
+
 @endsection
 
 
