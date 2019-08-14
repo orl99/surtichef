@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use App\product;
+use App\product;
 class CartDetail extends Model
 {
    public function product()
