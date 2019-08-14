@@ -61,12 +61,14 @@
      @endif
 
     <div class="col-12 py-4">
+    @if(count(auth()->user()->cart->details) > 0)
         <form method="post" action="{{ url ('/Order') }}">
             {{ csrf_field() }}
            <button class="btn bto-orange btn-block btn-lg">
                <i class="fas fa-check-circle"></i> Realizar pedido
             </button>
         </form>
+    @endif
 
     </div>
 </div>
