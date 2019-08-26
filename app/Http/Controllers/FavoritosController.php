@@ -3,30 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PHPUnit\Framework\Exception;
-use App\User;
-use App\product;
 use App\user_favs;
+use PHPUnit\Framework\Exception;
+use App\product;
 use Illuminate\Support\Facades\DB;
 
 class favoritosController extends Controller
 {
     public function index(){
-
-        // $Products = product::select('products.id', 'products.name', 'products.description', 'products.category_id', 'products.image')
-        //     ->join($user_favs, 'products.id', '=', 'user_favs.id_product')
-        //     ->join($user, 'user_favs.id_user', '=', 'users.id')
-        //     ->where('users.id', auth()->user()->cart->id)
-        //     ->where('user_favs.status_favs', 1)
-        //     ->get();
-
-        // $query = DB::select('SELECT products.id, products.name, products.description, products.category_id, products.image FROM products inner JOIN user_favs ON products.id = user_favs.id_product inner join users on user_favs.id_user = users.id where users.id = 1 AND user_favs.status_favs = 1');
-
+        /*
+        * SELECT P.id, P.name, P.description, P.category_id, P.image FROM products P inner JOIN user_favs A ON p.id = A.id_product inner join users U on A.id_user = U.id where U.id = 1 AND A.status_favs = 1
+        *
+        *        $Products::table('products')
+            ->select('products.id', 'products.name', 'products.description', 'products.category_id', 'products.image')
+            ->join('user_favs', 'products.id', '=', 'user_favs.id_product')
+            ->join('users', 'user_favs.id_user', '=', 'users.id')
+            ->where('users.id', 1)
+            ->where('user_favs.status_favs', 1)
+            ->get();
+        */
+        // $Products = new product();
+        
         $user = auth()->user()->id;
+
+
         $query = DB::select(
             DB::raw('SELECT products.id, products.name, products.description, products.category_id, products.image FROM products inner JOIN user_favs ON products.id = user_favs.id_product inner join users on user_favs.id_user = users.id where users.id = :user AND user_favs.status_favs = 1'),
             ['user' => $user]
         );
+        
         return view('client.favoritos')->with(compact('query'));
     }
 

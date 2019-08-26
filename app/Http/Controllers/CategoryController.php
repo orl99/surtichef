@@ -12,10 +12,10 @@ class CategoryController extends Controller
     	$categories = category::all();
     	return view('admin.category.category')->with(compact('categories'));
     }
-
+    
     public function create()
     {
-
+    	
     	return view('admin.category.create');
     }
 

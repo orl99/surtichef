@@ -51,7 +51,7 @@
     </div>
      <div class="row mt-3 mb-3">
         <div class="col-12">
-            <a href="" style="color:white; ">
+            <a href="https://wa.me/528681158172" style="color:white; ">
                 <div class="col-12 shadow py-5 px-3" style="border-radius:15px;background-color:#09cd18;">
                     Asistencia Tecnica <i class="fab fa-whatsapp" style="font-size:35px;color:white;"></i>
                 </div>

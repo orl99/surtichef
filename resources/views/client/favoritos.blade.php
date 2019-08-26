@@ -21,7 +21,7 @@
 
         @foreach ($query as $detail)
         <div class="col-6 mt-5">
-           <div class="col-12 text-center shadow" style="background-color:#fff;border-radius:20px;">
+           <div class="col-12 text-center shadow px-0" style="background-color:#fff;border-radius:20px;">
 
                <div class="col-12 px-0">
 
@@ -42,12 +42,12 @@
                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                    <div class="row mx-0 py-4">
                        <div class="col-6">
-                           <a href="{{ url('/Products/'.$detail->id) }}" class="btn btn-info">
+                           <a href="{{ url('/Products/'.$detail->id) }}" class="btn btn-outline-dark">
                                <i class="fas fa-eye"></i>
                            </a>
                        </div>
                        <div class="col-6">
-                           <button type="submit" class="btn btn-danger">
+                           <button type="submit" class="btn bto-orange">
                                <i class="fas fa-trash-alt"></i>
                            </button>
                        </div>
@@ -88,11 +88,20 @@
             <div class="modal-body" id="modalBody">
             <!-- Modal body -->
                 {{ csrf_field() }}
-                @foreach($query as $detail)
+            @foreach($query as $detail)
             <div class="col-12 form-group" id="El{{$detail->id}}">
                     <button onclick="deleteList('El{{$detail->id}}')" type="button" style="background-color: red; border-radius: 50%; color:white; width:24; height: 24px;" class="close deleteEle">&times;</button>
+                    <img class="img-fluid" src="{{asset ("img/product/$detail->image") }}">
                     <h4 class="modal-title">{{$detail->name}}</h4>
-                    <input required class="form-control inputNum" type="number" name="quantity[]">
+                    {{-- New Select Implementation --}}
+                    <div class="row">
+                        <input required class="form-control inputNum col-8" type="number" placeholder="Numero de Unidades" name="quantity[]">
+                        <select required class="form-control col-4" name="unidad[]" id="unidad">
+                            <option value="Caja">Caja</option>
+                            <option value="Pz">Pz</option>
+                        </select>
+                    </div>
+                    {{-- New Select Implementation --}}
                     <input type="hidden" name="product_id[]" value="{{ $detail->id }}">
                 </div>
                 @endforeach
