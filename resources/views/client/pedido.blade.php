@@ -14,9 +14,8 @@
         <div class="col-12 text-center shadow" style="background-color:#fff;border-radius:20px;">
 
     		<div class="col-12 px-0">
-
                 @if($detail->product->image)
-                    <img class="img-fluid" src="{{asset ("img/product/$detail->product->image") }}">
+                    <img class="img-fluid" src="{{asset ("img/product/" . $detail->product->image) }}">
                 @else
                     <img class="img-fluid" src="{{asset ("img/product.png") }}">
                 @endif
@@ -29,7 +28,13 @@
                 <b>Cantidad de Pedido:</b>
             </div>
 
-            <div class="col-12 py-4 px-0">{{ $detail->quantity }}</div>
+            <div class="col-12 py-4 px-0">
+                @if($detail->unidad == "Caja" && $detail->quantity > 1)
+                    <p>{{ $detail->quantity }} {{ $detail->unidad }}s</p>
+                @else
+                    <p>{{ $detail->quantity }} {{ $detail->unidad }}</p>
+                @endif
+            </div>
 
     		<form method="post" action="{{url ('/Cart') }}">
                     {{ csrf_field() }}
@@ -60,21 +65,19 @@
         </div>
      @endif
 
+   @if(auth()->user()->cart->details->count())
     <div class="col-12 py-4">
-    @if(count(auth()->user()->cart->details) > 0)
         <form method="post" action="{{ url ('/Order') }}">
             {{ csrf_field() }}
            <button class="btn bto-orange btn-block btn-lg">
                <i class="fas fa-check-circle"></i> Realizar pedido
             </button>
         </form>
+    </div>
+    @else<div class="col-12"></div>
     @endif
 
-    </div>
 </div>
-
-<script src="{{ asset('js/pedidos.js') }}" defer></script>
-
 @endsection
 
 

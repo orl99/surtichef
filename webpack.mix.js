@@ -15,7 +15,6 @@ mix.js(['resources/js/app.js'], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 
-    mix.scripts(
-        ['resources/js/favoritos.js'], 'public/js/favoritos.js', );
-    mix.scripts(
-        ['resources/js/pedidos.js'], 'public/js/pedidos.js', );
+    mix.scripts([
+        'resources/js/favoritos.js'
+    ], 'public/js/favoritos.js');
