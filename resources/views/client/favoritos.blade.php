@@ -1,12 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <script src="{{ URL::asset('js/favoritos.js') }}"></script> --}}
-{{-- <script src="{{ elixir('js/favoritos.js') }}"></script> --}}
-
-{{-- {{Html::script('/js/favoritos.js')}} --}}
 <div class="container-fluid mt-5 pt-5">
-	<div class="col-12">
+	<div class="col-12 mt-10">
 		<div class="alert alert-primary">
             @if( count($query) > 1 )
                 Tienes {{ count($query) }}  Productos añadidos en tu pre-pedio !!!
@@ -16,9 +12,15 @@
             Tienes un Producto añadido a Favoritos!!!
             @endif
 		</div>
+        @if( session('notification') )
+            <div class="alert alert-success">
+                {{session('notification')}}
+            </div>
+        @endif
     </div>
+</div>
     <div class="row mx-0 text-center">
-{{--  @foreach ($query as $detail)
+ {{-- @foreach ($query as $detail)
         <div class="col-6 mt-5">
            <div class="col-12 text-center shadow px-0" style="background-color:#fff;border-radius:20px;">
 
@@ -29,9 +31,7 @@
                    @else
                        <img class="img-fluid" src="{{asset ("img/product.png") }}">
                    @endif
-                   <img class="img-fluid" src="{{asset ("img/product/$detail->product->image") }}">
                </div>
-
                <div class="col-12 py-4 px-0">{{ $detail->name }}</div>
 
                <form method="post" action="{{url ('/favoritos') }}">
@@ -94,7 +94,7 @@
                     <h4 class="modal-title">{{$detail->name}}</h4>
                     {{-- New Select Implementation --}}
                     <div class="row">
-                        <input required placeholder="Numero de Unidades" class="form-control inputNum col-12" type="number" name="quantity[]">
+                        <input placeholder="Numero de Unidades" class="form-control inputNum col-12" type="number" name="quantity[]">
                         {{--<select required class="form-control col-4" name="unidad[]" id="unidad">
                             <option value="Caja">Caja</option>
                             <option value="Pz">Pz</option>

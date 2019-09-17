@@ -37,27 +37,31 @@ class CartDetailController extends Controller
         * - Compos con valores validos
         *
         */
-    if( !empty($request->product_id) && !empty($request->quantity) && !empty($request->unidad)){
+    if( !empty($request->product_id) && !empty($request->quantity)){
+
         $arrResponse = [
             "product_id" => $request->product_id,
             "quantity" => $request->quantity,
-            "unidad" => $request->unidad
+            // "unidad" => $request->unidad
         ];
         $filters = [
             "product_id" => 'digit',
             "quantity" => 'digit',
-            "unidad" => 'strip_tags',
+            // "unidad" => 'strip_tags',
         ];
         $DataSanitize = \Sanitizer::make($arrResponse, $filters)->sanitize();
 
 
         for($i = 0; $i < count($DataSanitize["product_id"]); $i++){
+            if(!$DataSanitize["quantity"][$i] == ''){
                 $cartDetail = new CartDetail();
                 $cartDetail->cart_id = auth()->user()->cart->id;
                 $cartDetail->product_id = $DataSanitize["product_id"][$i];
                 $cartDetail->quantity = $DataSanitize["quantity"][$i];
-                $cartDetail->unidad = $DataSanitize["unidad"][$i];
+                // $cartDetail->unidad = $DataSanitize["unidad"][$i];
                 $cartDetail->save();
+            }
+            continue;
         }
         $notification = 'Se a Realizado con exito su Pedido!!';
            return back()->with(compact('notification'));
