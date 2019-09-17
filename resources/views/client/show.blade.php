@@ -46,7 +46,6 @@
             {{ csrf_field() }}
             <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
             <input type="hidden" name="id_product" value="{{$product->id}}">
-            {{-- <input type="hidden" name="product_info" value="{{$product}}"> --}}
         </form>
 
         <a href="#"  onclick="event.preventDefault(); document.getElementById('fav_add').submit();">
@@ -116,15 +115,14 @@
                 </div>
                 {{-- New Select Implementation --}}
         </div>
-      </div>
 
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-outline-dark btn-lg" data-dismiss="modal">
-          <i class="far fa-times-circle"></i> Cancelar</button>
-        <button type="submit" class="btn bto-orange btn-lg"><i class="fas fa-plus"></i> Agregar</button>
-      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark btn-lg" data-dismiss="modal">
+            <i class="far fa-times-circle"></i> Cancelar</button>
+            <button type="submit" class="btn bto-orange btn-lg"><i class="fas fa-plus"></i> Agregar</button>
+        </div>
       </form>
     </div>
   </div>

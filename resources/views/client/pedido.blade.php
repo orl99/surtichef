@@ -14,7 +14,6 @@
         <div class="col-12 text-center shadow" style="background-color:#fff;border-radius:20px;">
 
     		<div class="col-12 px-0">
-
                 @if($detail->product->image)
                    <img class="img-fluid" src="{{asset ("img/product/" . $detail->product->image) }}">
                 @else
@@ -77,7 +76,6 @@
     </div>
     @else<div class="col-12"></div>
     @endif
-    
 </div>
 @endsection
 

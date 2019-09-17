@@ -54,7 +54,7 @@
                </form>
            </div>
        </div>
-       @endforeach --}} 
+       @endforeach --}}
     </div>
    </div>
 
@@ -87,7 +87,7 @@
             <div class="modal-body" id="modalBody">
             <!-- Modal body -->
                 {{ csrf_field() }}
-                @foreach($query as $detail)
+            @foreach($query as $detail)
             <div class="col-12 form-group" id="El{{$detail->id}}">
                     <button onclick="deleteList('El{{$detail->id}}')" type="button" style="background-color: red; border-radius: 50%; color:white; width:24; height: 24px;" class="close deleteEle">&times;</button>
                     <img class="img-fluid" src="{{asset ("img/product/$detail->image") }}">
