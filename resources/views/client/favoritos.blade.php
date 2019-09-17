@@ -12,6 +12,11 @@
             Tienes un Producto añadido a Favoritos!!!
             @endif
 		</div>
+        @if( session('notification') )
+            <div class="alert alert-success">
+                {{session('notification')}}
+            </div>
+        @endif
     </div>
 </div>
     <div class="row mx-0 text-center">
@@ -89,7 +94,7 @@
                     <h4 class="modal-title">{{$detail->name}}</h4>
                     {{-- New Select Implementation --}}
                     <div class="row">
-                        <input required placeholder="Numero de Unidades" class="form-control inputNum col-12" type="number" name="quantity[]">
+                        <input placeholder="Numero de Unidades" class="form-control inputNum col-12" type="number" name="quantity[]">
                         {{--<select required class="form-control col-4" name="unidad[]" id="unidad">
                             <option value="Caja">Caja</option>
                             <option value="Pz">Pz</option>
