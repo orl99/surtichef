@@ -54,7 +54,7 @@
                  style="display: flex;
                      flex-direction:column;
                      justify-content: center;
-                     align-items: center; color: yellow; font-size: 25px;">
+                     align-items: center; color:orange; font-size: 25px;">
             @if( count($fav_status) > 0 )
                 @if($fav_status[0]->status_favs >= 1)
                     <i class="fas fa-star text_underline"></i>
@@ -105,8 +105,16 @@
       	{{ csrf_field() }}
       	<input type="hidden" name="product_id" value="{{ $product->id }}">
       <div class="modal-body">
-        <div class="form-group">
-           <input type="number" name="quantity" value="" class="form-control">
+        <div class="form-group col-12">
+                {{-- New Select Implementation --}}
+                <div class="row">
+                    <input required type="number" placeholder="Numero de Unidades" name="quantity" value="" class="form-control col-12">
+                    {{--<select required class="form-control col-4" name="unidad" id="unidad">
+                        <option value="Caja">Caja</option>
+                        <option value="Pz">Pz</option>
+                    </select>--}}
+                </div>
+                {{-- New Select Implementation --}}
         </div>
       </div>
 

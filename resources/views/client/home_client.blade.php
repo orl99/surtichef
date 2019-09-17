@@ -26,7 +26,7 @@
          <div class="col-6">
              <a href="{{url ('favoritos') }}" style="color:#212F3D; ">
                 <div class="col-12 shadow py-5 px-3" style="border-radius:15px;background-color:#F8F9F9;">
-                    Favoritos <br><i class="fas fa-star" style="font-size:35px;color:#FEBD10;"></i>
+                    Realizar pedido <br><i class="fas fa-shopping-cart" style="font-size:35px;color:#FEBD10;"></i>
                 </div>
             </a>
         </div>
@@ -37,7 +37,7 @@
        <div class="col-6">
             <a href="{{route ('client.pedido') }}" style="color:#212F3D; ">
                 <div class="col-12 shadow py-5 px-3" style="border-radius:15px;background-color:#F8F9F9;">
-                    Mi Pedido<br> <i class="fas fa-box-open" style="font-size:35px;color:#FEBD10;"></i>
+                    Confirmar pedido<br> <i class="fas fa-cart-plus" style="font-size:35px;color:#FEBD10;"></i>
                 </div>
             </a>
         </div>
@@ -51,7 +51,7 @@
     </div>
      <div class="row mt-3 mb-3">
         <div class="col-12">
-            <a href="" style="color:white; ">
+            <a href="https://wa.me/528681158172" style="color:white; ">
                 <div class="col-12 shadow py-5 px-3" style="border-radius:15px;background-color:#09cd18;">
                     Asistencia Tecnica <i class="fab fa-whatsapp" style="font-size:35px;color:white;"></i>
                 </div>

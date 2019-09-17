@@ -10,13 +10,13 @@ class CategoryController extends Controller
     public function category()
     {
     	$categories = category::all();
-    	return view('Admin.category.category')->with(compact('categories'));
+    	return view('admin.category.category')->with(compact('categories'));
     }
     
     public function create()
     {
     	
-    	return view('Admin.category.create');
+    	return view('admin.category.create');
     }
 
     //funcion para guardar producto
@@ -34,7 +34,7 @@ class CategoryController extends Controller
      public function edit($id)
     {
     	$category = category::find($id);
-    	return view('Admin.category.edit')->with(compact('category'));
+    	return view('admin.category.edit')->with(compact('category'));
     }
 //actualizar formularios
     public function update(Request $request, $id)

@@ -23,7 +23,15 @@ class favoritosController extends Controller
             ->get();
         */
         // $Products = new product();
-        $query = DB::select('SELECT P.id, P.name, P.description, P.category_id, P.image FROM products P inner JOIN user_favs A ON p.id = A.id_product inner join users U on A.id_user = U.id where U.id = 1 AND A.status_favs = 1');
+        
+        $user = auth()->user()->id;
+
+
+        $query = DB::select(
+            DB::raw('SELECT products.id, products.name, products.description, products.category_id, products.image FROM products inner JOIN user_favs ON products.id = user_favs.id_product inner join users on user_favs.id_user = users.id where users.id = :user AND user_favs.status_favs = 1'),
+            ['user' => $user]
+        );
+        
         return view('client.favoritos')->with(compact('query'));
     }
 
