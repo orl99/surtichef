@@ -9,7 +9,7 @@
 	<div class="col-12">
 		<div class="alert alert-primary">
             @if( count($query) > 1 )
-                Tienes {{ count($query) }}  Productos añadidos a Favoritos !!!
+                Tienes {{ count($query) }}  Productos añadidos en tu pre-pedio !!!
             @elseif( count($query) == 0)
             No tienes Productos añadidos a Favoritos
             @else
@@ -18,8 +18,7 @@
 		</div>
     </div>
     <div class="row mx-0 text-center">
-
-        @foreach ($query as $detail)
+{{--  @foreach ($query as $detail)
         <div class="col-6 mt-5">
            <div class="col-12 text-center shadow px-0" style="background-color:#fff;border-radius:20px;">
 
@@ -30,7 +29,7 @@
                    @else
                        <img class="img-fluid" src="{{asset ("img/product.png") }}">
                    @endif
-                   {{-- <img class="img-fluid" src="{{asset ("img/product/$detail->product->image") }}"> --}}
+                   <img class="img-fluid" src="{{asset ("img/product/$detail->product->image") }}">
                </div>
 
                <div class="col-12 py-4 px-0">{{ $detail->name }}</div>
@@ -55,7 +54,7 @@
                </form>
            </div>
        </div>
-       @endforeach
+       @endforeach --}}
     </div>
    </div>
 
@@ -69,7 +68,7 @@
 
 
     <div class="col-12 py-4">
-        <button class="btn bto-orange btn-block btn-lg" data-toggle="modal" id="addCartButton" data-target="#myModal">Agregar al Carrito</button>
+        <button class="btn bto-orange btn-block btn-lg" data-toggle="modal" id="addCartButton" data-target="#myModal"><i class="fas fa-clipboard-list"></i> Agregar pedido ahora</button>
     </div>
 
     <!-- The Modal -->
@@ -95,11 +94,11 @@
                     <h4 class="modal-title">{{$detail->name}}</h4>
                     {{-- New Select Implementation --}}
                     <div class="row">
-                        <input required class="form-control inputNum col-8" type="number" placeholder="Numero de Unidades" name="quantity[]">
-                        <select required class="form-control col-4" name="unidad[]" id="unidad">
+                        <input required placeholder="Numero de Unidades" class="form-control inputNum col-12" type="number" name="quantity[]">
+                        {{--<select required class="form-control col-4" name="unidad[]" id="unidad">
                             <option value="Caja">Caja</option>
                             <option value="Pz">Pz</option>
-                        </select>
+                        </select>--}}
                     </div>
                     {{-- New Select Implementation --}}
                     <input type="hidden" name="product_id[]" value="{{ $detail->id }}">
